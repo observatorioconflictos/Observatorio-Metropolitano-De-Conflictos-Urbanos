@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conflictos Urbanos - Observatorio Metropolitano de Conflictos Urbanos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/header-footer.css">
+    <link rel="stylesheet" href="css/mapa.css"> 
+    <link rel="stylesheet" href="css/ficha.css"> 
+</head>
+
+<body>
+    <header class="header">
+        <div class="container"> 
+            <div class="logos">
+                <img src="assets/logos/Logo 1.png" alt="Logo Observatorio">
+                <img src="assets/logos/Logo 2.png" alt="Logo Conurb">
+            </div>      
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            <nav class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li class="nav-item active"><a href="conflictos-urbanos.html" class="nav-link">Conflictos Urbanos</a></li>
+                    <li class="nav-item"><a href="metodologia.html" class="nav-link">Metodología</a></li>
+                    <li class="nav-item"><a href="equipo.html" class="nav-link">¿Quiénes somos?</a></li>
+                    <li class="nav-item"><a href="datos-abiertos.html" class="nav-link">Datos abiertos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="content">
+        <section class="section-block bg-blanco">
+            <div class="container">
+                <div class="section-title" style="max-width: 900px; margin: 0 auto;">
+                    <h2>Conflictos Sociales Urbanos</h2>
+                    <p style="margin-top: 15px; color: #555; line-height: 1.6;">
+                        Entendemos los CSU como procesos de confrontación y disputa que emergen en la ciudad cuando diferentes actores sociales, ya sean individuos, grupos organiados, comunidades o instituciones, expresan demandas, intereses o necesidades contrapuestas en relación con el acceso, uso, gestión o transformación de recursos, servicios, infraestructuras o terriroios de la ciudad. Los conflictos no constituyen anomalías del desarrollo urbano, sino que son la expresión de dinámicas de poder asimétricas inherentes a la producción social del espacio urbano contemporáneo.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-block bg-gris">
+            <div class="container">
+                <h3 class="level-3-title title-with-border">Mapa de Conflictos por Temática</h3>
+                <div id="mapa-tipos-grande" class="mapa-grande"></div>
+            </div>
+        </section>
+
+        <section class="section-block bg-blanco">
+            <div class="container">
+                <h3 class="level-3-title title-with-border">Gráficos</h3>
+            </div>
+        </section>
+
+        <section class="section-block bg-gris">
+            <div class="container">
+                <h3 class="level-3-title title-with-border">Cifras</h3>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container"> 
+                <div class="footer-logo">
+                    <img src="assets/logos/Logo 3.png" alt="Logo Observatorio" style="filter: brightness(0) invert(1);">
+                </div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="conflictos-urbanos.html">Conflictos Urbanos</a></li>
+                    <li><a href="metodologia.html">Metodología</a></li>
+                    <li><a href="equipo.html">¿Quiénes somos?</a></li>
+                    <li><a href="datos-abiertos.html">Datos abiertos</a></li>
+                </ul>
+                <div class="copyright">
+                    2026 - <a href="#">Observatorio Metropolitano de Conflictos Urbanos</a> está licenciado bajo <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>
+                </div>
+            </div>
+        </footer>
+
+        <div id="modal-ficha" class="modal-overlay">
+            <div class="modal-window">
+                <div class="ficha-header">
+                    <div class="top-row">
+                        <span id="ficha-estado" class="estado-badge">ESTADO</span>
+                        <button class="close-ficha" onclick="cerrarFicha()">×</button>
+                    </div>
+                    <h2 id="ficha-titulo">Título del Caso</h2>
+                    <div class="ficha-date">Actualizado: <span id="ficha-actualizacion">-</span></div>
+                </div>
+                <div class="red-line-separator"></div>
+                <div class="ficha-body">
+                    <div class="ficha-grid">
+                        <div class="col-datos">
+                            <div class="section-header-wrapper first-section">
+                                <h4 class="section-label-red">UBICACIÓN</h4>
+                            </div>
+                            <ul class="ficha-list" id="lista-ubicacion"></ul>
+                            
+                            <div id="wrapper-detalles" style="margin-top: 20px;">
+                                <div class="section-header-wrapper">
+                                    <h4 class="section-label-red">DETALLES DEL CASO</h4>
+                                </div>
+                                <ul class="ficha-list" id="lista-detalles"></ul>
+                            </div>
+                        </div>
+                        <div class="col-mapa">
+                            <div id="mapa-detalle"></div>
+                        </div>
+                    </div>
+                    <div class="wrapper-descripcion">
+                        <div class="section-header-wrapper">
+                            <h4 class="section-label-red">DESCRIPCIÓN</h4>
+                        </div>
+                        <p id="ficha-descripcion" class="text-desc"></p>
+                    </div>
+                    <div id="wrapper-imagen" style="display:none; margin-top:25px;">
+                        <div class="section-header-wrapper text-center">
+                            <h4 class="section-label-red">EVIDENCIA</h4>
+                        </div>
+                        <div style="text-align: center; margin-top: 15px;">
+                            <img id="ficha-imagen" src="" alt="Evidencia" style="max-width:100%; height:auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script src="js/general.js"></script>
+    <script src="js/header-footer.js"></script>
+    <script src="js/ficha.js"></script> 
+    <script src="js/mapa.js"></script>  
+</body>
+</html>
