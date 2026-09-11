@@ -34,14 +34,16 @@ window.updateMarkerSizes = function(mapInstance) {
 window.getColorPorTematica = function(tematica) {
     if (!tematica) return "#fd2827"; 
     const t = tematica.toLowerCase().trim();
-    if (t.includes("vialidad") || t.includes("movilidad")) return "#FF9800"; 
+    if (t.includes("infraestructura") || t.includes("vialidad")) return "#FF9800";
+    if (t.includes("movilidad") || t.includes("transporte")) return "#FF5722";
     if (t.includes("vivienda") || t.includes("suelo")) return "#E91E63"; 
     if (t.includes("patrimonio")) return "#9C27B0"; 
-    if (t.includes("mercados") || t.includes("comerciales")) return "#FFEB3B"; 
-    if (t.includes("espacio público")) return "#03A9F4"; 
+    if (t.includes("comercio") || t.includes("mercados")) return "#FFEB3B"; 
+    if (t.includes("espacios público") || t.includes("espacio público")) return "#03A9F4"; 
     if (t.includes("ambiental")) return "#00E676"; 
     if (t.includes("demarcación")) return "#3F51B5"; 
     if (t.includes("servicios básicos")) return "#FFFFFF"; 
+    if (t.includes("servicios público")) return "#795548";
     return "#fd2827"; 
 };
 
