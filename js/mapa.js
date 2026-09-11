@@ -141,15 +141,17 @@ if (activeConfig) {
             let div = L.DomUtil.create('div', 'map-legend-control');
             // Añadimos el atributo "data-tema" a cada item para identificarlo
             div.innerHTML = `
-                <div class="legend-item" data-tema="vialidad,movilidad"><span style="background-color: #FF9800;"></span> Proyectos de vialidad / movilidad</div>
-                <div class="legend-item" data-tema="vivienda,suelo"><span style="background-color: #E91E63;"></span> Acceso a la vivienda / suelo</div>
-                <div class="legend-item" data-tema="patrimonio"><span style="background-color: #9C27B0;"></span> Patrimonio urbano</div>
-                <div class="legend-item" data-tema="mercados,comerciales"><span style="background-color: #FFEB3B;"></span> Mercados y espacios comerciales</div>
-                <div class="legend-item" data-tema="espacio público"><span style="background-color: #03A9F4;"></span> Espacio público (apropiación)</div>
-                <div class="legend-item" data-tema="ambiental"><span style="background-color: #00E676;"></span> Ambiental</div>
-                <div class="legend-item" data-tema="demarcación"><span style="background-color: #3F51B5;"></span> Demarcación</div>
-                <div class="legend-item" data-tema="servicios básicos"><span style="background-color: #FFFFFF; border: 1px solid #aaa;"></span> Servicios Básicos</div>
-            `;
+    <div class="legend-item" data-tema="infraestructura,vialidad"><span style="background-color: #FF9800;"></span> Infraestructura y vialidad</div>
+    <div class="legend-item" data-tema="movilidad,transporte"><span style="background-color: #FF5722;"></span> Movilidad y transporte público</div>
+    <div class="legend-item" data-tema="vivienda,suelo"><span style="background-color: #E91E63;"></span> Acceso al suelo o la vivienda</div>
+    <div class="legend-item" data-tema="patrimonio"><span style="background-color: #9C27B0;"></span> Patrimonio edificado</div>
+    <div class="legend-item" data-tema="comercio,mercados"><span style="background-color: #FFEB3B;"></span> Comercio y mercados</div>
+    <div class="legend-item" data-tema="espacios público,espacio público"><span style="background-color: #03A9F4;"></span> Espacios públicos</div>
+    <div class="legend-item" data-tema="ambiental"><span style="background-color: #00E676;"></span> Condiciones ambientales</div>
+    <div class="legend-item" data-tema="demarcación"><span style="background-color: #3F51B5;"></span> Demarcación territorial</div>
+    <div class="legend-item" data-tema="servicios básicos"><span style="background-color: #FFFFFF; border: 1px solid #aaa;"></span> Servicios básicos</div>
+    <div class="legend-item" data-tema="servicios público"><span style="background-color: #795548;"></span> Servicios públicos</div>
+`;
 
             // Lógica de interactividad
             let items = div.querySelectorAll('.legend-item');
