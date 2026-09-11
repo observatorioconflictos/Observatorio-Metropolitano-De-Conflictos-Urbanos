@@ -2,7 +2,7 @@
    MAPA.JS - Motor General de Mapas
 ========================================= */
 
-const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSP-mkuUA5oFESiV0BPMnwQa_ycj2fy14YxcOGiYs0ADrztTby6oDV9cd-0WHKwvA/pub?gid=20337686&single=true&output=csv";
+const urlCSV = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSP-mkuUA5oFESiV0BPMnwQa_ycj2fy14YxcOGiYs0ADrztTby6oDV9cd-0WHKwvA/pub?gid=1829773570&single=true&output=csv";
 window.allMarkersData = window.allMarkersData || [];
 
 // 1. Utilidades Globales
@@ -200,7 +200,7 @@ if (activeConfig) {
             results.data.forEach(fila => {
                 let lat = parseFloat(fila['n_lat_I']);
                 let lng = parseFloat(fila['n_lon_I']);
-                let tematicaPri = fila['s_tematica_pri'] || ""; 
+                let tematicaPri = fila['sm_tematica_principal'] || ""; 
                 
                 // Cálculo de Cifras
                 if (fila['t_caso'] && fila['t_caso'].trim() !== "") totalConflictos++;
